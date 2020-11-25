@@ -1,4 +1,5 @@
 #!/bin/bash
+echo "test"
 echo $AF_USERID
 echo "Before assembling"
 
