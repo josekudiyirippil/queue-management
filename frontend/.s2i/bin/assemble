@@ -5,8 +5,9 @@ echo "Before assembling"
 
 
 # configure npm to use artifactory
+
 npm config set registry https://artifacts.developer.gov.bc.ca/artifactory/api/npm/npm-remote/
-curl -u $AF_USERID:$AF_PASSWD https://artifacts.developer.gov.bc.ca/artifactory/api/npm/auth >> ~/.npmrc
+curl -u $AF_USERID:$AF_PASSWD https://artifacts.developer.gov.bc.ca/artifactory/api/npm/auth >> /tmp/npmrc
 echo "set artifact url"
 
 /usr/libexec/s2i/assemble
