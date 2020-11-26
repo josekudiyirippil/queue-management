@@ -1,0 +1,20 @@
+#!/bin/bash
+echo "test"
+echo $AF_USERID
+echo "Before assembling"
+
+
+# configure npm to use artifactory
+index-url = $AF_USERID:$AF_PASSWD@artifacts.developer.gov.bc.ca/artifactory/api/pypi/pypi-remote/simple
+
+
+/usr/libexec/s2i/assemble
+# Todo - can delete below
+# We just need to run the default s2i assemble script as this is a standard build process
+# rc=$?
+
+# if [ $rc -eq 0 ]; then
+#     npm run build:production
+#     rc=$?
+# fi
+# exit $rc
