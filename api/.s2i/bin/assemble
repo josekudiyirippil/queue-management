@@ -7,7 +7,7 @@ echo "Before assembling"
 # configure npm to use artifactory
 mkdir /opt/app-root/src/.pip
 touch /opt/app-root/src/.pip/pip.conf
-curl -u index-url = $AF_USERID:$AF_PASSWD@artifacts.developer.gov.bc.ca/artifactory/api/pypi/pypi-remote/simple >> ~/.pip/pip.conf
+echo "index-url = $AF_USERID:$AF_PASSWD@artifacts.developer.gov.bc.ca/artifactory/api/pypi/pypi-remote/simple" >> ~/.pip/pip.conf
 cat ~/.pip/pip.conf
 
 
