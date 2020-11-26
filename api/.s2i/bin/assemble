@@ -5,7 +5,8 @@ echo "Before assembling"
 
 
 # configure npm to use artifactory
-index-url = $AF_USERID:$AF_PASSWD@artifacts.developer.gov.bc.ca/artifactory/api/pypi/pypi-remote/simple
+echo "index-url = $AF_USERID:$AF_PASSWD@artifacts.developer.gov.bc.ca/artifactory/api/pypi/pypi-remote/simple" >> ~/.pip/pip.conf
+cat ~/.pip/pip.conf
 
 
 /usr/libexec/s2i/assemble
