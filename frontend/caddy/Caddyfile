@@ -5,7 +5,7 @@
 
 # The site location
 root * /var/www/html
-file_server
+
 #root * /index.html /var/www
 
 # Logging details
