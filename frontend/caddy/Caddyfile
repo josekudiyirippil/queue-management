@@ -1,27 +1,46 @@
-0.0.0.0:2015
-root /var/www/html
-log stdout
-errors stdout
+# Listening Port for caddy
+:2015
 
-rewrite {
-    to {path} {path}/ /
+#respond "Hello, world!"
+
+# The site location
+root * /var/www/html
+file_server
+#root * /index.html /var/www
+
+# Logging details
+log {
+      output stdout
+      format single_field common_log
+      level info
 }
 
-header / {
-	# Enable HTTP Strict Transport Security (HSTS) to force clients to always
-	# connect via HTTPS (do not use if only testing)
-	Strict-Transport-Security "max-age=31536000;"
+#handle_errors stdout
 
-	# Enable cross-site filter (XSS) and tell browser to block detected attacks
-	X-XSS-Protection "1; mode=block"
+try_files {path}.html {path} /
 
-	# Prevent some browsers from MIME-sniffing a response away from the declared Content-Type
-	X-Content-Type-Options "nosniff"
+#rewrite {
+#    to @{path} {path}/ /
+#}
 
-	# Disallow the site to be rendered within a frame (clickjacking protection)
-	X-Frame-Options "DENY"
+header {
+        # Enable HTTP Strict Transport Security (HSTS) to force clients to always
+        # connect via HTTPS (do not use if only testing)
+        Strict-Transport-Security "max-age=31536000;"
 
-	# Turn off all caddy caching
-	Cache-Control no-cache,no-store,must-revalidate
-	Pragma no-cache
+        # Enable cross-site filter (XSS) and tell browser to block detected attacks
+        X-XSS-Protection "1; mode=block"
+
+        # Prevent some browsers from MIME-sniffing a response away from the declared Content-Type
+        X-Content-Type-Options "nosniff"
+
+        # Disallow the site to be rendered within a frame (clickjacking protection)
+        X-Frame-Options "DENY"
+
+        # Turn off all caddy caching
+        Cache-Control no-cache,no-store,must-revalidate
+        Pragma no-cache
+
+        # Content Security Policy
+        Content-Security-Policy "default-src 'none';frame-src 'self' *.gov.bc.ca; script-src 'self' 'sha256-YaRF5VNtISs/hr8ATuoP3elKspUwWe/m1uAve9Sbxuk=' *.gov.bc.ca https://maps.googleapis.com; style-src 'self' 'unsafe-inline'; font-src 'self' *.gov.bc.ca; img-src 'self' *.gov.bc.ca data:  https://maps.googleapis.com ; connect-src 'self' *.gov.bc.ca; manifest-src 'self'; "
 }
