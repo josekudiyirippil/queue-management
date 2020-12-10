@@ -17,7 +17,7 @@ log {
 
 #handle_errors stdout
 
-try_files {path}.html {path} /
+try_files {path} /index.html
 
 #rewrite {
 #    to @{path} {path}/ /
