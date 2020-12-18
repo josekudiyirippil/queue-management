@@ -4,8 +4,10 @@
 #respond "Hello, world!"
 
 # The site location
-#root * /var/www/html
-root * /index.html /var/www
+#root * /index.html /var/www
+root * /var/www/html
+file_server
+
 file_server
 
 # Logging details
