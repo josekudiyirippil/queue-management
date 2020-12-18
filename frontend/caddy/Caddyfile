@@ -4,9 +4,9 @@
 #respond "Hello, world!"
 
 # The site location
-root * /var/www/html
+#root * /var/www/html
+root * /index.html /var/www
 file_server
-#root * /index.html /var/www
 
 # Logging details
 log {
