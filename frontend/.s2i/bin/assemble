@@ -3,8 +3,8 @@ echo "Before assembling"
 echo $NPM_CONFIG_USERCONFIG
 
 #echo $NPM_CONFIG_USERCONFIG >> ~/.npmrc
-npm config set registry https://artifacts.developer.gov.bc.ca/artifactory/api/npm/npm-remote/
-curl -u $NPM_CONFIG_USERCONFIG https://artifacts.developer.gov.bc.ca/artifactory/api/npm/auth >> ~/.npmrc
+#npm config set registry https://artifacts.developer.gov.bc.ca/artifactory/api/npm/npm-remote/
+#curl -u $NPM_CONFIG_USERCONFIG https://artifacts.developer.gov.bc.ca/artifactory/api/npm/auth >> ~/.npmrc
 
 /usr/libexec/s2i/assemble
 # Todo - can delete below
