@@ -2,7 +2,7 @@
 echo "Before assembling"
 echo $NPM_CONFIG_USERCONFIG
 
-curl -u $NPM_CONFIG_USERCONFIG >> ~/.npmrc
+echo $NPM_CONFIG_USERCONFIG >> ~/.npmrc
 
 /usr/libexec/s2i/assemble
 # Todo - can delete below
