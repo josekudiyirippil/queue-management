@@ -377,9 +377,9 @@ podTemplate(
 ) {
     node(owaspPodLabel) {
         stage('ZAP Security Scan') {          
-            def retVal = sh (
-                returnStatus: true, 
-                script: "/zap/zap-baseline.py -r index1.html -t https://dev-theq.apps.silver.devops.gov.bc.ca/"
+                def retVal = sh (
+                    returnStatus: true, 
+                    script: "/zap/zap-baseline.py -r index1.html -t https://dev-theq.apps.silver.devops.gov.bc.ca/" ,
             )
         }
         stage('ZAP Security Scan') {          
