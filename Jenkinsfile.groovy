@@ -21,7 +21,7 @@
 
 def WAIT_TIMEOUT = 20
 def TAG_NAMES = ['dev', 'test', 'prod']
-def BUILDS = ['queue-management-api', 'queue-management-npm-build', 'queue-management-frontend', 'appointment-npm-build', 'appointment-frontend','send-appointment-reminder-crond']
+def BUILDS = ['queue-management-api', 'queue-management-npm-build', 'queue-management-frontend', 'appointment-npm-build', 'appointment-frontend','send-appointment-reminder-crond','notifications-api']
 def DEP_ENV_NAMES = ['dev', 'test', 'prod']
 def label = "mypod-${UUID.randomUUID().toString()}"
 def API_IMAGE_HASH = ""
@@ -157,6 +157,17 @@ podTemplate(
                     }
                 }
             }
+        }, Build_notifications_api: {
+            stage("Build notification api") {
+                script: {
+                    openshift.withCluster() {
+                        openshift.withProject() {
+                            openshift.selector("bc", "${BUILDS[6]}").startBuild("--wait")
+                        }
+                        echo "notification api complete ..."
+                    }
+                }
+            }
         }
         parallel Build_Staff_FE: {
             stage("Build Staff Front End ..") {
@@ -220,6 +231,22 @@ podTemplate(
                             REMINDER_IMAGE_HASH = getImageTagHash("${BUILDS[5]}")
                             echo "REMINDER_IMAGE_HASH: ${REMINDER_IMAGE_HASH}"
                             openshift.tag("${BUILDS[5]}@${REMINDER_IMAGE_HASH}", "${BUILDS[5]}:${TAG_NAMES[0]}")
+                        }
+                    }
+                }
+            }
+        }, Depoy_notifications_api: {
+            stage("Deploy notifications api pod") {
+                script: {
+                    openshift.withCluster() {
+                        openshift.withProject() {
+                            echo "Tagging ${BUILDS[6]} for deployment to ${TAG_NAMES[0]} ..."
+
+                            // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
+                            // Tag the images for deployment based on the image's hash
+                            REMINDER_IMAGE_HASH = getImageTagHash("${BUILDS[6]}")
+                            echo "REMINDER_IMAGE_HASH: ${REMINDER_IMAGE_HASH}"
+                            openshift.tag("${BUILDS[6]}@${REMINDER_IMAGE_HASH}", "${BUILDS[6]}:${TAG_NAMES[0]}")
                         }
                     }
                 }
