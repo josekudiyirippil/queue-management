@@ -249,7 +249,7 @@ podTemplate(
                             // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
                             // Tag the images for deployment based on the image's hash
                             FEEDBACK_IMAGE_HASH = getImageTagHash("${BUILDS[5]}")
-                            echo "NOTIFICATION_IMAGE_HASH: ${FEEDBACK_IMAGE_HASH}"
+                            echo "FEEDBACK_IMAGE_HASH: ${FEEDBACK_IMAGE_HASH}"
                             openshift.tag("${BUILDS[5]}@${FEEDBACK_IMAGE_HASH}", "${BUILDS[5]}:${TAG_NAMES[0]}")
                         }
                     }
@@ -491,7 +491,7 @@ node {
 
                         // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
                         // Tag the images for deployment based on the image's hash
-                        echo "NOTIFICATION_IMAGE_HASH: ${FEEDBACK_IMAGE_HASH}"
+                        echo "FEEDBACK_IMAGE_HASH: ${FEEDBACK_IMAGE_HASH}"
                         openshift.tag("${BUILDS[5]}@${FEEDBACK_IMAGE_HASH}", "${BUILDS[5]}:${TAG_NAMES[1]}")
                     }
                 }
@@ -634,7 +634,7 @@ node {
 
                         // Don't tag with BUILD_ID so the pruner can do it's job; it won't delete tagged images.
                         // Tag the images for deployment based on the image's hash
-                        echo "NOTIFICATION_IMAGE_HASH: ${FEEDBACK_IMAGE_HASH}"
+                        echo "FEEDBACK_IMAGE_HASH: ${FEEDBACK_IMAGE_HASH}"
                         openshift.tag("${BUILDS[5]}@${FEEDBACK_IMAGE_HASH}", "${BUILDS[5]}:${TAG_NAMES[2]}")
                     }
                 }
