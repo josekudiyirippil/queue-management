@@ -1,5 +1,5 @@
 [![img](https://img.shields.io/badge/Lifecycle-Stable-97ca00)]
-## Queue Managment System
+## Queue Managment System.
 
 The Queue Managment System will be used to manage the citizen flow and provide analtyics for our Service BC locations. This system is designed to be used for government offices with a large number of services.
 
@@ -17,7 +17,7 @@ Designed for use in an application platform buld for containers specifically Ope
 
 ## Features
 
-Designed to accomodate multiple locations.  
+Designed to accomodate multiple locations..  
 Designed for both reception based offices and direct counter offices.
 
 Additional features for Reception offices:
