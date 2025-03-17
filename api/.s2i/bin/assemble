@@ -4,6 +4,7 @@ echo "Before assembling"
 # Copy the CA root certificate to the appropriate directory
 mkdir -p /etc/pki/ca-trust/source/anchors/
 cp /opt/app-root/src/SSL.com2017.crt /etc/pki/ca-trust/source/anchors/
+cat /etc/pki/ca-trust/source/anchors/*.crt >> /etc/pki/tls/certs/ca-bundle.crt
 
 # Update the CA certificates
 update-ca-trust
