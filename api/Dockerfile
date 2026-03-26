@@ -22,4 +22,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["gunicorn", "wsgi", "--bind=0.0.0.0:8080", "--access-logfile=-"]
+CMD ["gunicorn", "--worker-class", "eventlet", "--workers", "1", "--bind", "0.0.0.0:8080", "--access-logfile=-", "wsgi"]
