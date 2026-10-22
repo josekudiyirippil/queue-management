@@ -62,7 +62,7 @@ This repository supports two local development workflows:
 
 #### Prerequisites
 
-- Podman or another compatible Docker engine
+- Podman or another compatible Docker engine.
 - Visual Studio Code (or another editor with Dev Container support)
 - The Dev Containers extension for VS Code
 
